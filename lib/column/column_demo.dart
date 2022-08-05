@@ -22,12 +22,31 @@ class _ColumnAppState extends State<ColumnApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.asset('assets/image1.jpg'),
-              Image.asset('assets/image2.jpg'),
-              Image.asset('assets/image3.jpg'),
               Expanded(
                 flex: 2,
-                child: Image.asset('assets/image4.jpg'),
+                child: Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Image.asset('assets/image1.jpg'),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Image.asset('assets/image2.jpg'),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Image.asset('assets/image3.jpg'),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Image.asset('assets/image4.jpg'),
+                ),
               ),
             ],
           ),
