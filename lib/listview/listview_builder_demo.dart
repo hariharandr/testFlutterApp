@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class ListViewApp extends StatefulWidget {
-  const ListViewApp({super.key});
+class ListViewBuilderDemo extends StatefulWidget {
+  const ListViewBuilderDemo({super.key});
 
   @override
-  State<ListViewApp> createState() => _ListViewAppState();
+  State<ListViewBuilderDemo> createState() => _ListViewBuilderDemoState();
 }
 
 randomColor() {
   return Colors.primaries[Random().nextInt(Colors.primaries.length)];
 }
 
-class _ListViewAppState extends State<ListViewApp> {
+class _ListViewBuilderDemoState extends State<ListViewBuilderDemo> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Basics Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Infinite ListView',
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Infinite ListView',
         ),
-        body: ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemBuilder: (_, index) {
-            return Container(color: randomColor(), width: 500, height: 500);
-          },
-        ),
+      ),
+      body: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemBuilder: (_, index) {
+          return Container(color: randomColor(), width: 500, height: 500);
+        },
       ),
     );
   }

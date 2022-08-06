@@ -1,47 +1,38 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    MyApp(
-      items: List<ListItem>.generate(
-        100,
-        (i) => i % 6 == 0
-            ? HeadingItem('Heading $i')
-            : MessageItem('Sender $i', 'Message body $i'),
-      ),
-    ),
-  );
-}
+List<ListItem> _items = List<ListItem>.generate(
+  100,
+  (i) => i % 6 == 0
+      ? HeadingItem('Heading $i')
+      : MessageItem('Sender $i', 'Message body $i'),
+);
 
-class MyApp extends StatelessWidget {
-  final List<ListItem> items;
+class DiffTypeListViewDemo extends StatelessWidget {
+  DiffTypeListViewDemo({super.key});
 
-  const MyApp({super.key, required this.items});
+  final List<ListItem> items = _items;
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Mixed List';
+    const title = 'Different Types Added To ListView';
 
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
-        ),
-        body: ListView.builder(
-          // Let the ListView know how many items it needs to build.
-          itemCount: items.length,
-          // Provide a builder function. This is where the magic happens.
-          // Convert each item into a widget based on the type of item it is.
-          itemBuilder: (context, index) {
-            final item = items[index];
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(title),
+      ),
+      body: ListView.builder(
+        // Let the ListView know how many items it needs to build.
+        itemCount: items.length,
+        // Provide a builder function. This is where the magic happens.
+        // Convert each item into a widget based on the type of item it is.
+        itemBuilder: (context, index) {
+          final item = items[index];
 
-            return ListTile(
-              title: item.buildTitle(context),
-              subtitle: item.buildSubtitle(context),
-            );
-          },
-        ),
+          return ListTile(
+            title: item.buildTitle(context),
+            subtitle: item.buildSubtitle(context),
+          );
+        },
       ),
     );
   }

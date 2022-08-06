@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/column/column_demo.dart';
+import 'package:quizapp/routes.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -10,6 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ColumnApp();
+    return MaterialApp(
+        title: 'Demo Flutter App',
+        initialRoute: '/',
+        routes: appRoutes,
+        debugShowCheckedModeBanner: false);
   }
 }

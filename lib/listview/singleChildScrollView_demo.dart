@@ -1,47 +1,29 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SingleChildScrollViewDemo extends StatelessWidget {
+  const SingleChildScrollViewDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Horizontal List';
+    final ScrollController _scrollcontroller = ScrollController();
+    const title = 'Single Child Scroll View';
 
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(title),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(title),
+      ),
+      body: Scrollbar(
+        thumbVisibility: true,
+        controller: _scrollcontroller,
+        child: SingleChildScrollView(
+          controller: _scrollcontroller,
+          // scrollDirection: Axis.horizontal,
+          child: Container(
+            height: 10000.0,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.red,
+          ),
         ),
-        body: SingleChildScrollView(
-            // This next line does the trick.
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Container(
-                  width: 12,
-                  color: Colors.red,
-                ),
-                Container(
-                  width: 12,
-                  color: Colors.blue,
-                ),
-                Container(
-                  width: 12,
-                  color: Colors.green,
-                ),
-                Container(
-                  width: 12,
-                  color: Colors.yellow,
-                ),
-                Container(
-                  width: 12,
-                  color: Colors.orange,
-                ),
-              ],
-            )),
       ),
     );
   }

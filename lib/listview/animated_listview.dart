@@ -1,30 +1,22 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+class AnimatedListViewDemo extends StatelessWidget {
+  const AnimatedListViewDemo({Key? key}) : super(key: key);
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue, brightness: Brightness.dark),
-      home: SimpleAnimatedList(),
-    );
-  }
-}
-
-class SimpleAnimatedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SliceAnimatedList(),
+      appBar: AppBar(
+        title: const Text('Animated List View'),
+      ),
+      body: const SliceAnimatedList(),
     );
   }
 }
 
 class SliceAnimatedList extends StatefulWidget {
+  const SliceAnimatedList({Key? key}) : super(key: key);
+
   @override
   _SliceAnimatedListState createState() => _SliceAnimatedListState();
 }
@@ -43,7 +35,7 @@ class _SliceAnimatedListState extends State<SliceAnimatedList> {
         end: const Offset(0, 0),
       ).animate(animation),
       child: SizedBox(
-        height: 128.0,
+        height: 80.0,
         child: Card(
           color: Colors.primaries[item % Colors.primaries.length],
           child: Center(
@@ -72,23 +64,24 @@ class _SliceAnimatedListState extends State<SliceAnimatedList> {
           ),
         ),
         Container(
-          decoration: const BoxDecoration(color: Colors.greenAccent),
+          decoration:
+              const BoxDecoration(color: Color.fromARGB(255, 47, 142, 219)),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               TextButton(
                 onPressed: () {
                   setState(() {
-                    listKey.currentState.insertItem(0,
+                    listKey.currentState?.insertItem(0,
                         duration: const Duration(milliseconds: 500));
                     _items = []
                       ..add(counter++)
                       ..addAll(_items);
                   });
                 },
-                child: Text(
+                child: const Text(
                   "Add item to first",
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
@@ -96,14 +89,14 @@ class _SliceAnimatedListState extends State<SliceAnimatedList> {
               TextButton(
                 onPressed: () {
                   if (_items.length <= 1) return;
-                  listKey.currentState.removeItem(
+                  listKey.currentState?.removeItem(
                       0, (_, animation) => slideIt(context, 0, animation),
                       duration: const Duration(milliseconds: 500));
                   setState(() {
                     _items.removeAt(0);
                   });
                 },
-                child: Text(
+                child: const Text(
                   "Remove first item",
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
