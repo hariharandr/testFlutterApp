@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/notification/model/push_notification.dart';
 import 'package:overlay_support/overlay_support.dart';
 
-class HomePageN extends StatefulWidget {
-  const HomePageN({Key? key}) : super(key: key);
+class FirebaseCloudNotificationPage extends StatefulWidget {
+  const FirebaseCloudNotificationPage({Key? key}) : super(key: key);
 
   @override
-  _HomePageNState createState() => _HomePageNState();
+  _FirebaseCloudNotificationPageState createState() =>
+      _FirebaseCloudNotificationPageState();
 }
 
-class _HomePageNState extends State<HomePageN> {
+class _FirebaseCloudNotificationPageState
+    extends State<FirebaseCloudNotificationPage> {
   late final FirebaseMessaging _messaging;
   late int _totalNotifications;
   PushNotification? _notificationInfo;

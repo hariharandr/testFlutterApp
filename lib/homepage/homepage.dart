@@ -16,6 +16,11 @@ class HomePage extends StatelessWidget {
         children: [
           ElevatedButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/localnotification');
+              },
+              child: const Text('Local Notification')),
+          ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, '/notification');
               },
               child: const Text('Notification From Firebase')),

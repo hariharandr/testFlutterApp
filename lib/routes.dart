@@ -1,5 +1,6 @@
 import 'package:quizapp/column/column_demo.dart';
 import 'package:quizapp/listview/pageview_demo.dart';
+import 'package:quizapp/notification/local_notification.dart';
 import 'package:quizapp/notification/notification.dart';
 import 'package:quizapp/row/row_demo.dart';
 import 'package:quizapp/gridview/gridview_demo.dart';
@@ -19,5 +20,6 @@ var appRoutes = {
   '/reorderlist': (context) => const ReorderableListViewDemo(),
   '/singlechildlistview': (context) => const SingleChildScrollViewDemo(),
   '/pageview': (context) => const PageViewDemo(),
-  '/notification': (context) => const HomePageN(),
+  '/notification': (context) => const FirebaseCloudNotificationPage(),
+  '/localnotification': (context) => const LocalNotificationPage(),
 };
