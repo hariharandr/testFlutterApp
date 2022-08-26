@@ -4,10 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/notification/model/push_notification.dart';
 import 'package:overlay_support/overlay_support.dart';
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print("Handling a background message: ${message.messageId}");
-}
-
 class HomePageN extends StatefulWidget {
   const HomePageN({Key? key}) : super(key: key);
 
@@ -24,8 +20,6 @@ class _HomePageNState extends State<HomePageN> {
     await Firebase.initializeApp();
     _messaging = FirebaseMessaging.instance;
 
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
     NotificationSettings settings = await _messaging.requestPermission(
       alert: true,
       badge: true,
@@ -34,8 +28,6 @@ class _HomePageNState extends State<HomePageN> {
     );
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('User granted permission');
-
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         // Parse the message received
         PushNotification notification = PushNotification(
