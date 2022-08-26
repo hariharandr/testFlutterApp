@@ -19,9 +19,11 @@ class HorizontalListViewDemo extends StatelessWidget {
           scrollDirection: Axis.horizontal,
 
           children: <Widget>[
-            Container(
-              width: 160.0,
-              color: Colors.red,
+            Expanded(
+              child: Container(
+                width: 160.0,
+                color: Colors.red,
+              ),
             ),
             Container(
               width: 160.0,

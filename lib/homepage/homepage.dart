@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+String messageTitle = "Empty";
+String notificationAlert = "alert";
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -11,6 +14,11 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/notification');
+              },
+              child: const Text('Notification From Firebase')),
           ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/column');
